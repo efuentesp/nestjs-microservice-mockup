@@ -1,0 +1,10 @@
+{
+  "customer": [
+    {
+      "number": "C001",
+      "name": "Customer 01",
+      "mail": "customer001@mail.com",
+      "address": "Address 001"
+    }
+  ]
+}

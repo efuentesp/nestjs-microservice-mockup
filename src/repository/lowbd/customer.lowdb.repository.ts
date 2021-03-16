@@ -14,8 +14,6 @@ export class CustomerLowDbRepository {
   }
 
   findAll(): Customer[] {
-    // this.logger.log(`CustomerLowDbRepository.find(${filterCriteria})`);
-
     return this.db.get('customer').value();
   }
 

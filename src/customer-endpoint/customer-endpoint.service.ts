@@ -11,7 +11,6 @@ export class CustomerEndpointService {
   constructor(private customerLowDbRepository: CustomerLowDbRepository) {}
 
   findAll(): Customer[] {
-    // this.logger.log(`CustomerEndpointService.findAll()`);
     return this.customerLowDbRepository.findAll();
   }
 

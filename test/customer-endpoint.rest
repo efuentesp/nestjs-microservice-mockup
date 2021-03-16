@@ -1,4 +1,4 @@
-# GET http://localhost:3000/customer
+GET http://localhost:3000/customer
 
 # GET http://localhost:3000/customer/C001
 
@@ -19,7 +19,7 @@
 #   "number": "C002",
 #   "name": "Customer 02",
 #   "mail": "customer002@mail.com",
-#   "address": "Address 002"
+#   "address": ""
 # }
 
 # PUT http://localhost:3000/customer/C002 HTTP/1.1
@@ -32,4 +32,4 @@
 #   "address": "Address 002"
 # }
 
-DELETE http://localhost:3000/customer/C002
+# DELETE http://localhost:3000/customer/C002

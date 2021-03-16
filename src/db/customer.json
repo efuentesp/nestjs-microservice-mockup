@@ -5,6 +5,12 @@
       "name": "Customer 01",
       "mail": "customer001@mail.com",
       "address": "Address 001"
+    },
+    {
+      "number": "C002",
+      "name": "Customer 02",
+      "mail": "customer002@mail.com",
+      "address": "Address 002"
     }
   ]
 }

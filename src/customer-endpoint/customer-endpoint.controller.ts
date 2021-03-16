@@ -3,10 +3,14 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Logger,
   Param,
   Post,
   Put,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 
 import { Customer } from 'src/repository/entity/customer.entity';
@@ -29,10 +33,17 @@ export class CustomerEndpointController {
   @Get(':number')
   findOne(@Param() params): Customer {
     this.logger.log(`GET /customer/${params.number}`);
-    return this.customerEndpointService.findOne({ number: params.number });
+    const result = this.customerEndpointService.findOne({
+      number: params.number,
+    });
+    if (result == undefined) {
+      throw new HttpException('Customer not found', HttpStatus.NOT_FOUND);
+    }
+    return result;
   }
 
   @Post()
+  @UsePipes(ValidationPipe)
   create(@Body() postCustomerEntityDTO: PostCustomerEntityDTO) {
     this.logger.log(`POST /customer`);
     this.customerEndpointService.create(postCustomerEntityDTO);
@@ -41,15 +52,23 @@ export class CustomerEndpointController {
   @Put(':number')
   update(@Param() params, @Body() putCustomerEntityDTO: PutCustomerEntityDTO) {
     this.logger.log(`PUT /customer/${params.number}`);
-    this.customerEndpointService.update(
+    const result = this.customerEndpointService.update(
       { number: params.number },
       putCustomerEntityDTO,
     );
+    if (result == undefined) {
+      throw new HttpException('Customer not found', HttpStatus.NOT_FOUND);
+    }
   }
 
   @Delete(':number')
   delete(@Param() params) {
     this.logger.log(`DELETE /customer/${params.number}`);
-    this.customerEndpointService.delete({ number: params.number });
+    const result = this.customerEndpointService.delete({
+      number: params.number,
+    });
+    if (result == undefined) {
+      throw new HttpException('Customer not found', HttpStatus.NOT_FOUND);
+    }
   }
 }
